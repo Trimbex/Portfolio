@@ -26,8 +26,22 @@ const Hero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <span className="block">Hi, I'm Kalp Senghani</span>
-            <span className="block mt-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">I design and develop high-performance web applications.</span>
+            <span className="block">
+              Hi
+              <motion.span
+                className="inline-block ml-2"
+                role="img"
+                aria-label="waving hand"
+                initial={{ rotate: 0 }}
+                animate={{ rotate: [0, 14, -8, 14, 0] }}
+                transition={{ repeat: Infinity, repeatDelay: 1.2, duration: 1.8, ease: "easeInOut" }}
+                style={{ transformOrigin: "70% 70%" }}
+              >
+                👋
+              </motion.span>
+              , I'm Saif Hatem
+            </span>
+            <span className="block mt-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">I build AI-powered products that ship and scale.</span>
           </motion.h1>
           
           <motion.h2 
@@ -36,13 +50,13 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <span className="block">I craft</span>
+            <span className="block">I turn ideas into</span>
             <AnimatedText 
               text={[
-                " Scalable full stack solutions ", 
-                "Intelligent & data-driven features", 
-                "Scalable system design",
-                "AI-powered user experiences"
+                "AI that ships",
+                "Full-stack from pixel to production",
+                "Cloud-native at scale",
+                "LLM agents & data pipelines"
               ]} 
               className="text-blue-400 font-medium" 
             />
@@ -54,7 +68,7 @@ const Hero = () => {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.6 }}
           >
-           Building reliable, intuitive, and future-ready software with a passion for innovation.
+           Product-minded engineer crafting delightful, production-ready experiences with AI, full-stack, and the cloud.
           </motion.p>
           
           {/* Social Icons above buttons */}
