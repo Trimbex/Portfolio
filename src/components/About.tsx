@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 
 interface TimelineItem {
   id: number;
@@ -7,33 +8,74 @@ interface TimelineItem {
   title: string;
   description: string;
   type: 'education' | 'experience' | 'award';
+  logoSrc?: string;
+  logoAlt?: string;
+  organization?: string;
+  organizationUrl?: string;
+  location?: string;
+  techStack?: Array<{ src: string; alt: string; url?: string }>;
+  highlights?: string[];
 }
 
 const timelineData: TimelineItem[] = [
   {
     id: 1,
-    year: "April 2025 – Present",
-    title: "YouTube Analytics SaaS – Advanced Creator Intelligence Dashboard",
-    description: `Will architect and launch a scalable SaaS platform for YouTube creators, targeting 10,000+ concurrent users with high-availability APIs. Will integrate YouTube Data API v3 to deliver real-time analytics and actionable insights with sub-200ms latency. Will enable modular, containerized deployments and interactive dashboards, aiming for a 40%+ increase in user engagement and robust multi-tier access control.`,
-    type: "experience"
+    year: "August 2025 – Present",
+    title: "Machine Learning Intern",
+    organization: "Elevvo Pathways",
+    location: "Cairo, Egypt",
+    description: ``,
+    highlights: [
+      "Customer Segmentation (Mall Customers): Scaled and clustered with K-Means/DBSCAN; optimal k=5 via silhouette. Identified high-spend segments and lifted CTR +12% in a hypothetical campaign; computed avg spend per cluster for personas.",
+      "Forest Cover Classification (Covertype): XGBoost/Random Forest reached ~93% accuracy; elevation and distance features dominated importance. Confusion matrix analysis reduced misclassifications between similar conifers.",
+      "Loan Approval Prediction: Addressed imbalance with SMOTE + threshold tuning, improving minority-class F1 by +27% at precision ≈ 0.81; delivered clearer risk stratification.",
+      "Sales Forecasting (Walmart): Engineered time/seasonality features with time-aware CV; XGBoost delivered MAPE ≈ 8.7%, improving planning and stock alignment.",
+    ],
+    type: "experience",
+    techStack: [
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt: "Python" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", alt: "PyTorch" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg", alt: "TensorFlow" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg", alt: "Docker" }
+    ]
   },
   {
     id: 2,
     year: "Apr. 2023 – Apr. 2025",
-    title: "Information Technology Support Specialist, George Brown College, Toronto, ON",
+    title: "Information Technology Support Specialist",
+    organization: "George Brown College",
+    location: "Toronto, ON",
     description: `Provided Tier 1/2 support for 1,000+ students and staff, maintaining campus-wide Windows/macOS systems and networked devices. Achieved a 95% satisfaction rate by resolving complex technical issues and automating health checks, reducing printer downtime by 30%. Managed asset tracking, software deployment, and IT documentation to optimize workflow efficiency.`,
     type: "experience"
   },
   {
     id: 3,
     year: "2022 - 2025",
-    title: "Advanced Diploma in Computer Programming & Analysis, George Brown College",
+    title: "Advanced Diploma in Computer Programming & Analysis",
+    organization: "George Brown College",
     description: "Focused on full stack development, AI, cloud computing, and mobile app development. Built multiple academic and personal projects using modern technologies.",
     type: "education"
   }
 ];
 
+const COLLAPSED_MAX_HEIGHT_PX = 224; // ~ h-56
+
 const About = () => {
+  const [expandedById, setExpandedById] = useState<Record<number, boolean>>({});
+  const [needsCollapseById, setNeedsCollapseById] = useState<Record<number, boolean>>({});
+  const [maxHeightById, setMaxHeightById] = useState<Record<number, number | 'auto'>>({});
+  const contentRefs = useRef<Map<number, HTMLDivElement>>(new Map());
+
+  useEffect(() => {
+    const nextNeeds: Record<number, boolean> = {};
+    for (const item of timelineData) {
+      const el = contentRefs.current.get(item.id);
+      if (el) {
+        nextNeeds[item.id] = el.scrollHeight > COLLAPSED_MAX_HEIGHT_PX + 4;
+      }
+    }
+    setNeedsCollapseById(nextNeeds);
+  }, []);
   return (
     <section id="about" className="section-container">
       <h2 className="section-title">About Me</h2>
@@ -93,13 +135,120 @@ const About = () => {
                   </div>
                   <Card className="glass-card rounded-xl border-muted shadow-xl group-hover:border-blue-400 transition-all w-full">
                     <CardContent className="p-6">
-                      <div className="text-sm font-medium text-muted-foreground mb-1">
-                        {item.year}
+                      <div className="mb-2 flex items-center justify-between gap-4">
+                        <div className="text-sm font-medium text-muted-foreground">
+                          {item.year}
+                        </div>
+                        <div className="w-10 h-10 rounded-md border border-dashed border-blue-500/30 bg-black/20 flex items-center justify-center overflow-hidden">
+                          {item.logoSrc ? (
+                            <img
+                              src={item.logoSrc}
+                              alt={item.logoAlt ?? 'Company logo'}
+                              className="w-full h-full object-contain p-1"
+                            />
+                          ) : (
+                            <span className="text-[10px] text-muted-foreground">Logo</span>
+                          )}
+                        </div>
                       </div>
-                      <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">{item.title}</h3>
-                      <p className="text-muted-foreground whitespace-pre-line">
-                        {item.description}
-                      </p>
+                      <h3 className="text-xl font-semibold bg-gradient-to-r from-blue-400 to-purple-500 text-transparent bg-clip-text">{item.title}</h3>
+                      {(item.organization || item.location) && (
+                        <div className="mb-2 text-sm text-muted-foreground">
+                          {item.organization ? (
+                            item.organizationUrl ? (
+                              <a
+                                href={item.organizationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:underline"
+                              >
+                                {item.organization}
+                              </a>
+                            ) : (
+                              <span>{item.organization}</span>
+                            )
+                          ) : null}
+                          {item.organization && item.location ? <span> • </span> : null}
+                          {item.location ? <span>{item.location}</span> : null}
+                        </div>
+                      )}
+                      {/* Collapsible content starts */}
+                      <div
+                        ref={(el) => {
+                          if (el) {
+                            contentRefs.current.set(item.id, el);
+                          } else {
+                            contentRefs.current.delete(item.id);
+                          }
+                        }}
+                        style={{
+                          maxHeight: expandedById[item.id]
+                            ? maxHeightById[item.id] === 'auto'
+                              ? 'none'
+                              : `${maxHeightById[item.id] ?? COLLAPSED_MAX_HEIGHT_PX}px`
+                            : `${COLLAPSED_MAX_HEIGHT_PX}px`,
+                        }}
+                        className="relative overflow-hidden transition-[max-height] duration-500 ease-in-out"
+                        onTransitionEnd={(e) => {
+                          if (e.propertyName === 'max-height' && expandedById[item.id]) {
+                            setMaxHeightById((prev) => ({ ...prev, [item.id]: 'auto' }));
+                          }
+                        }}
+                      >
+                      {item.techStack && item.techStack.length > 0 && (
+                        <div className="mt-2 mb-2 flex flex-wrap items-center gap-2">
+                          {item.techStack.map((tech, index) => (
+                            <a
+                              key={`${item.id}-tech-${index}`}
+                              href={tech.url ?? '#'}
+                              target={tech.url ? "_blank" : undefined}
+                              rel={tech.url ? "noopener noreferrer" : undefined}
+                              className="group"
+                              aria-label={tech.alt}
+                            >
+                              <div className="w-6 h-6 rounded-sm bg-black/20 border border-muted/40 flex items-center justify-center overflow-hidden group-hover:border-blue-500/40 transition">
+                                <img src={tech.src} alt={tech.alt} className="w-full h-full object-contain" />
+                              </div>
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                      {item.highlights && item.highlights.length > 0 && (
+                        <ul className="mt-2 mb-1 list-disc marker:text-purple-500 pl-5 space-y-1 text-base text-muted-foreground">
+                          {item.highlights.map((point, i) => (
+                            <li key={`${item.id}-hl-${i}`}>{point}</li>
+                          ))}
+                        </ul>
+                      )}
+                      {item.description && item.description.trim().length > 0 && (
+                        <p className="text-sm text-muted-foreground whitespace-pre-line">
+                          {item.description}
+                        </p>
+                      )}
+
+                      {!expandedById[item.id] && needsCollapseById[item.id] && (
+                        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-background to-transparent flex items-end justify-center">
+                          <div className="relative mb-2 pointer-events-auto">
+                            <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-10 bg-gradient-to-t from-purple-600/30 to-transparent rounded-t-full blur-md" />
+                            <Button
+                              size="sm"
+                              className="relative z-10 rounded-full px-4 py-1.5 bg-gradient-to-r from-blue-500 to-purple-600 text-white shadow hover:opacity-90"
+                              onClick={() => {
+                                const el = contentRefs.current.get(item.id);
+                                if (el) {
+                                  // Set target height to scrollHeight for smooth expansion
+                                  setMaxHeightById((prev) => ({ ...prev, [item.id]: el.scrollHeight }));
+                                }
+                                setExpandedById((prev) => ({ ...prev, [item.id]: true }));
+                              }}
+                            >
+                              See more
+                            </Button>
+                          </div>
+                        </div>
+                      )}
+                      </div>
+                      {/* Collapsible content ends */}
                     </CardContent>
                   </Card>
                 </div>
