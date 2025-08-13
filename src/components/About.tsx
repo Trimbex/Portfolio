@@ -24,6 +24,8 @@ const timelineData: TimelineItem[] = [
     title: "Machine Learning Intern",
     organization: "Elevvo Pathways",
     location: "Cairo, Egypt",
+    logoSrc: "/elevvo.jpg",
+    logoAlt: "Elevvo Pathways",
     description: ``,
     highlights: [
       "Customer Segmentation (Mall Customers): Scaled and clustered with K-Means/DBSCAN; optimal k=5 via silhouette. Identified high-spend segments and lifted CTR +12% in a hypothetical campaign; computed avg spend per cluster for personas.",
@@ -41,20 +43,82 @@ const timelineData: TimelineItem[] = [
   },
   {
     id: 2,
-    year: "Apr. 2023 – Apr. 2025",
-    title: "Information Technology Support Specialist",
-    organization: "George Brown College",
-    location: "Toronto, ON",
-    description: `Provided Tier 1/2 support for 1,000+ students and staff, maintaining campus-wide Windows/macOS systems and networked devices. Achieved a 95% satisfaction rate by resolving complex technical issues and automating health checks, reducing printer downtime by 30%. Managed asset tracking, software deployment, and IT documentation to optimize workflow efficiency.`,
-    type: "experience"
+    year: "April 2024 – October 2024",
+    title: "Generative AI Trainee",
+    organization: "Digital Egypt Pioneers Initiative",
+    location: "Cairo, Egypt",
+    logoSrc: "/depi.png",
+    logoAlt: "Digital Egypt Pioneers Initiative",
+    description: ``,
+    highlights: [
+      "Completed the DEPI Generative AI Training, gaining hands-on experience in machine learning and deep learning techniques.",
+      "Built and trained models using Python, NumPy, Pandas, scikit-learn, and TensorFlow/PyTorch.",
+      "Explored foundational and advanced concepts in neural networks, including CNNs, RNNs, and transformers.",
+      "Designed and implemented Generative AI models such as Variational Autoencoders (VAEs) and GANs for image generation and augmentation.",
+      "Applied prompt engineering and experimented with large language models (LLMs) to solve real-world tasks.",
+      "Contributed to building a mobile-friendly text-to-3D model generation system, integrating Generative AI with mobile deployment frameworks.",
+    ],
+    type: "education",
+    techStack: [
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg", alt: "Python", url: "https://www.python.org/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg", alt: "NumPy", url: "https://numpy.org/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg", alt: "Pandas", url: "https://pandas.pydata.org/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg", alt: "scikit-learn", url: "https://scikit-learn.org/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg", alt: "TensorFlow", url: "https://www.tensorflow.org/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg", alt: "PyTorch", url: "https://pytorch.org/" },
+      { src: "https://cdn.simpleicons.org/huggingface", alt: "Hugging Face", url: "https://huggingface.co/" },
+      { src: "https://cdn.simpleicons.org/openai", alt: "OpenAI", url: "https://platform.openai.com/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", alt: "Git", url: "https://git-scm.com/" }
+    ]
   },
   {
     id: 3,
-    year: "2022 - 2025",
-    title: "Advanced Diploma in Computer Programming & Analysis",
-    organization: "George Brown College",
-    description: "Focused on full stack development, AI, cloud computing, and mobile app development. Built multiple academic and personal projects using modern technologies.",
-    type: "education"
+    year: "July 2024 – August 2024",
+    title: "Front-End Engineer Trainee",
+    organization: "Information Technology Institute",
+    location: "Cairo, Egypt",
+    logoSrc: "/ITI.png",
+    logoAlt: "Information Technology Institute",
+    description: ``,
+    highlights: [
+      "Built responsive and interactive web applications using HTML5, CSS3, JavaScript (ES6+), and React.js.",
+      "Applied modern UI/UX principles to create user-friendly interfaces and accessible designs.",
+      "Integrated external RESTful APIs and managed state with React Hooks and Context API.",
+      "Developed a fully functional movie website using React, featuring real-time data fetching, search functionality, and dynamic routing.",
+    ],
+    type: "education",
+    techStack: [
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg", alt: "HTML5", url: "https://developer.mozilla.org/en-US/docs/Web/HTML" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg", alt: "CSS3", url: "https://developer.mozilla.org/en-US/docs/Web/CSS" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg", alt: "JavaScript", url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg", alt: "React.js", url: "https://reactjs.org/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-original.svg", alt: "Bootstrap", url: "https://getbootstrap.com/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg", alt: "Figma", url: "https://www.figma.com/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", alt: "Git", url: "https://git-scm.com/" }
+    ]
+  },
+  {
+    id: 4,
+    year: "January 2024 – February 2024",
+    title: "Software Engineer Intern",
+    organization: "CodeAlpha",
+    location: "India",
+    logoSrc: "/codealpha.jpg",
+    logoAlt: "CodeAlpha",
+    description: ``,
+    highlights: [
+      "Developed a comprehensive Hotel Management System in Java with room booking, customer management, and billing functionalities.",
+      "Built a Student Grade Tracker application featuring grade calculation, student records management, and performance analytics.",
+      "Created a Banking System with account management, transaction processing, balance tracking, and secure authentication features.",
+      "Applied object-oriented programming principles including inheritance, polymorphism, and encapsulation in all projects.",
+      "Implemented data persistence using file handling and basic database connectivity for reliable data storage.",
+    ],
+    type: "experience",
+    techStack: [
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg", alt: "Java", url: "https://www.oracle.com/java/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg", alt: "IntelliJ IDEA", url: "https://www.jetbrains.com/idea/" },
+      { src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg", alt: "Git", url: "https://git-scm.com/" }
+    ]
   }
 ];
 
@@ -95,20 +159,41 @@ const About = () => {
               <p className="text-muted-foreground">
                 Currently, I'm exploring the potential of <span className="font-semibold text-blue-400">AI agents</span> to automate workflows and enhance software capabilities.
               </p>
-              <h3 className="text-xl font-semibold mt-8 mb-4 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Certifications</h3>
-              <div className="flex flex-col gap-4">
-                <a href="https://www.coursera.org/account/accomplishments/specialization/LI5Q0UI157UD?utm_source=link&utm_medium=certificate&utm_content=cert_image&utm_campaign=sharing_cta&utm_product=prof" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-black/30 border border-blue-500/20 hover:bg-blue-900/20 transition">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Google Data Analytics" className="w-8 h-8" />
+              
+              <h3 className="text-xl font-semibold mt-8 mb-4 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Education</h3>
+              <div className="flex flex-col gap-4 mb-6">
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-black/30 border border-blue-500/20">
+                  <img src="https://eng.asu.edu.eg/public/ext/images/logo-white.png" alt="Ain Shams University" className="w-10 h-10 object-contain rounded" />
                   <div>
-                    <div className="font-semibold text-blue-400">Google Data Analytics Professional Certificate</div>
-                    <div className="text-xs text-muted-foreground">Data Analytics Focus</div>
+                    <div className="font-semibold text-blue-400">Ain Shams University</div>
+                    <div className="text-sm text-muted-foreground">Faculty of Engineering</div>
+                    <div className="text-xs text-muted-foreground">Computer Engineering & Software Systems • 2021 - Present</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 p-3 rounded-lg bg-black/30 border border-blue-500/20">
+                  <img src="https://uelresearch.com/wp-content/uploads/2015/02/cropped-uel-logo-2010_rgb2.png" alt="University of East London" className="w-10 h-10 object-cover rounded" />
+                  <div>
+                    <div className="font-semibold text-blue-400">University of East London</div>
+                    <div className="text-sm text-muted-foreground">Faculty of Engineering</div>
+                    <div className="text-xs text-muted-foreground">Computer Science (Dual Degree) • 2022 - Present</div>
+                  </div>
+                </div>
+              </div>
+              
+              <h3 className="text-xl font-semibold mb-4 bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">Certifications</h3>
+              <div className="flex flex-col gap-4">
+                <a href="https://www.coursera.org/account/accomplishments/professional-cert/OP8V0FHK62E5" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-black/30 border border-blue-500/20 hover:bg-blue-900/20 transition">
+                  <img src="https://static.cdnlogo.com/logos/i/92/ibm.svg" alt="IBM AI Engineering Professional" className="w-8 h-8" />
+                  <div>
+                    <div className="font-semibold text-blue-400">IBM AI Engineering Professional</div>
+                    <div className="text-xs text-muted-foreground">AI/ML Focus</div>
                   </div>
                 </a>
-                <a href="https://www.credly.com/badges/6366a28e-790a-4f83-9825-308fd4b1ed07/public_url" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-black/30 border border-blue-500/20 hover:bg-blue-900/20 transition">
-                  <img src="https://www.google.com/imgres?q=ibm%20logo%20svg&imgurl=https%3A%2F%2Fcdn.iconscout.com%2Ficon%2Ffree%2Fpng-256%2Ffree-ibm-logo-icon-download-in-svg-png-gif-file-formats--brand-company-brands-pack-logos-icons-2284974.png&imgrefurl=https%3A%2F%2Ficonscout.com%2Ffree-icon%2Fibm-2752157_2284974&docid=LhVFGlKx0-DrXM&tbnid=yEIptWpnccv7WM&vet=12ahUKEwiDv_eH3LeOAxXflIkEHe-TEnYQM3oECG8QAA..i&w=256&h=256&hcb=2&ved=2ahUKEwiDv_eH3LeOAxXflIkEHe-TEnYQM3oECG8QAA" alt="IBM Data Science" className="w-8 h-8" />
+                <a href="https://www.coursera.org/account/accomplishments/professional-cert/O2X1IRNUCOD2" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-lg bg-black/30 border border-blue-500/20 hover:bg-blue-900/20 transition">
+                  <img src="https://static.cdnlogo.com/logos/m/35/meta-platforms.svg" alt="Meta Front End Developer Professional" className="w-8 h-8" />
                   <div>
-                    <div className="font-semibold text-blue-400">IBM Data Science Professional Certificate</div>
-                    <div className="text-xs text-muted-foreground">Data Science Focus</div>
+                    <div className="font-semibold text-blue-400">Meta Front End Engineer Professional</div>
+                    <div className="text-xs text-muted-foreground">Web Dev Focus</div>
                   </div>
                 </a>
               </div>
@@ -139,7 +224,7 @@ const About = () => {
                         <div className="text-sm font-medium text-muted-foreground">
                           {item.year}
                         </div>
-                        <div className="w-10 h-10 rounded-md border border-dashed border-blue-500/30 bg-black/20 flex items-center justify-center overflow-hidden">
+                        <div className="w-12 h-12 rounded-md bg-black/20 flex items-center justify-center overflow-hidden">
                           {item.logoSrc ? (
                             <img
                               src={item.logoSrc}

@@ -44,7 +44,7 @@ A modern, responsive portfolio website showcasing professional experience, proje
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/kalpsenghani/portfolio.git
+   git clone https://github.com/Trimbex/portfolio.git
    ```
 
 2. Navigate to the project directory:
@@ -121,5 +121,5 @@ For any inquiries or suggestions, please reach out through the contact form on t
 ---
 
 <div align="center">
-Made with ❤️ by Kalp Senghani
+Made with ❤️ by Saif Hatem
 </div>

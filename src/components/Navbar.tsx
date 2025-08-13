@@ -31,10 +31,9 @@ const Navbar = () => {
 
   const navItems = [
     { href: "#hero", label: "Home", icon: User },
-    { href: "#technologies", label: "Skills", icon: Brain },
     { href: "#about", label: "About Me", icon: User },
+    { href: "#technologies", label: "Skills", icon: Brain },
     { href: "#projects", label: "Projects", icon: Code2 },
-    
   ];
 
   return (
@@ -51,13 +50,11 @@ const Navbar = () => {
           <a href="#" className="relative group flex items-center justify-center">
             {/* Full logo glow effect */}
             <div className="absolute inset-0 z-0 pointer-events-none">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 rounded-full blur-2xl opacity-60 group-hover:opacity-90 transition-all duration-500"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-blue-900 rounded-xl blur-2xl opacity-60 group-hover:opacity-90 transition-all duration-500"></div>
             </div>
-            <img 
-              src="/lovable-uploads/e9810342-de6a-4f13-9171-0077afe8c75a.png" 
-              alt="Kalp Logo" 
-              className="h-14 w-14 relative z-10" 
-            />
+            <div className="relative z-10 w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300">
+              <span className="text-white font-bold text-xl tracking-tight">SH</span>
+            </div>
           </a>
           
           {/* Desktop Navigation */}

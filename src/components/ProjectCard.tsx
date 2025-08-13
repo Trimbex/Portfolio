@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Github } from 'lucide-react';
 
 export interface Project {
   id: number;
@@ -95,7 +96,8 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
           
           {project.githubUrl && (
             <Button asChild className="w-full px-8 py-2 rounded-full bg-gradient-to-b from-gray-800 to-gray-900 hover:from-gray-700 hover:to-gray-800 text-white focus:ring-2 focus:ring-gray-400 hover:shadow-xl transition duration-200">
-              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+              <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                <Github size={16} />
                 GitHub
               </a>
             </Button>
