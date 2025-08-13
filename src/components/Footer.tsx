@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Code2, Heart, ArrowUp, Atom, FileCode, Palette, Zap } from 'lucide-react';
+import VisitorCounter from './VisitorCounter';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -46,17 +47,20 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Right side - Tech stack icons */}
-            <div className="flex items-center space-x-4">
-              {techStack.map((tech) => (
-                <div
-                  key={tech.label}
-                  className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-800/80 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
-                  title={tech.label}
-                >
-                  <tech.icon className="w-5 h-5" />
-                </div>
-              ))}
+            {/* Right side - Tech stack icons and visitor counter */}
+            <div className="flex items-center space-x-6">
+              <VisitorCounter />
+              <div className="flex items-center space-x-4">
+                {techStack.map((tech) => (
+                  <div
+                    key={tech.label}
+                    className="p-2 rounded-full bg-gray-800/50 hover:bg-gray-800/80 text-gray-400 hover:text-white transition-all duration-300 transform hover:scale-110"
+                    title={tech.label}
+                  >
+                    <tech.icon className="w-5 h-5" />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
