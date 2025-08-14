@@ -1,0 +1,25 @@
+[build]
+  command = "npm run build"
+  functions = "netlify/functions"
+  publish = "dist"
+
+[functions]
+  external_node_modules = ["@vercel/kv"]
+
+[context.production.environment]
+  KV_URL = "rediss://default:AY7lAAIncDFmYmI4MWQyOGZkMmE0OWFkYjVjMjMxZWVkZGJjYjNhN3AxMzY1ODE@secure-dassie-36581.upstash.io:6379"
+  KV_REST_API_URL = "https://secure-dassie-36581.upstash.io"
+  KV_REST_API_TOKEN = "AY7lAAIncDFmYmI4MWQyOGZkMmE0OWFkYjVjMjMxZWVkZGJjYjNhN3AxMzY1ODE"
+  KV_REST_API_READ_ONLY_TOKEN = "Ao7lAAIgcDGj6wPmySXx-N7qoPYcamXiHDwcTxzI7Di3qgAGyv7Omw"
+  REDIS_URL = "rediss://default:AY7lAAIncDFmYmI4MWQyOGZkMmE0OWFkYjVjMjMxZWVkZGJjYjNhN3AxMzY1ODE@secure-dassie-36581.upstash.io:6379"
+
+[[redirects]]
+  from = "/api/*"
+  to = "/.netlify/functions/:splat"
+  status = 200
+
+# Handle client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
